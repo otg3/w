@@ -1,6 +1,22 @@
 <script>
-  //https://gpt3.github.io/w/demo2019?id=j7ae3g6j
+  function getQueryParams(qs) {
+    qs = qs.split('+').join(' ');
+
+    var params = {},
+        tokens,
+        re = /[?&]?([^=]+)=([^&]*)/g;
+
+    while (tokens = re.exec(qs)) {
+        params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+    }
+
+    return params;
+}
+ </script>
+
+<script>
+  //https://gpt3.github.io/w?r=demo2019&id=j7ae3g6j
   //https://wl.restmesh.com/r/demo2019?id=j7ae3g6j 
-  var restname = location.origin.split("/r/")[1];
-  location.href = "https://wl.restmesh.com/r/"+restname+location.search;
+  var q = getQueryParams(document.location.search);
+  location.href = "https://wl.restmesh.com/r/"+q.restname+"?id="+q.id;
 </script>
