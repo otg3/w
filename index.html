@@ -1,22 +1,5 @@
 <script>
-  function getQueryParams(qs) {
-    qs = qs.split('+').join(' ');
-
-    var params = {},
-        tokens,
-        re = /[?&]?([^=]+)=([^&]*)/g;
-
-    while (tokens = re.exec(qs)) {
-        params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
-    }
-
-    return params;
-}
- </script>
-
-<script>
-  //https://otg3.github.io/w?r=demo2019&id=j7ae3g6j
+  //https://otg3.github.io/w?p=/r/demo2019?id=j7ae3g6j
   //https://wl.restmesh.com/r/demo2019?id=j7ae3g6j 
-  var q = getQueryParams(document.location.search);
-  location.href = "https://wl.restmesh.com/r/"+q.r+"?id="+q.id;
+  location.href = "https://wl.restmesh.com"+location.search.split("?p=")[1];
 </script>
